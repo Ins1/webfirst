@@ -1,0 +1,1155 @@
+/* Import website font */
+@import url("https://stockfont.org/?22c26111750f91bf28ac3a5df503a5d659a3ed4c12ec6489fc756083af2572f0");
+
+body {
+  background-image: url(images/bg.png);
+  margin: 0;
+  padding: 0;
+  font-family: "Oxygen-Regular", sans-serif;
+  overflow: hidden;
+}
+
+.sky {
+  position: absolute;
+  width: 100vw;
+  height: 80vh;
+  left: 0;
+  top: 0;
+  background-color: skyblue;
+  background-position: bottom left;
+}
+
+aside {
+  width: 200px;
+  position: fixed;
+  height: 100vh;
+  left: 100%;
+  margin-left: -240px;
+  background-color: #ddd;
+  border-left: 5px solid #bbb;
+  padding: 20px;
+}
+#closeside {
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.character {
+  position: absolute;
+  top: 88vh;
+  left: 200px;
+  display: block;
+}
+.character .body {
+  width: 32px;
+  height: 32px;
+  background-image: url(images/body0.png);
+  background-position: 64px 0px;
+  margin-top: 14px;
+}
+.character .head {
+  width: 32px;
+  height: 32px;
+  background-image: url(images/head0.png);
+  margin-bottom: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 0px -64px;
+}
+
+aside ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+.heads li,
+.bodies li {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -64px;
+  float: left;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  margin-right: 4px;
+}
+.heads li:hover,
+.bodies li:hover {
+  border: 2px solid red;
+}
+#head0 {
+  background-image: url(images/head0.png);
+}
+
+#head1 {
+  background-image: url(images/head1.png);
+}
+#head2 {
+  background-image: url(images/head2.png);
+}
+#head3 {
+  background-image: url(images/head3.png);
+}
+#head4 {
+  background-image: url(images/head4.png);
+}
+
+.bodies li {
+  background-position: 64px 0px;
+}
+#body0 {
+  background-image: url(images/body0.png);
+}
+#body1 {
+  background-image: url(images/body1.png);
+}
+#body2 {
+  background-image: url(images/body2.png);
+}
+#body3 {
+  background-image: url(images/body3.png);
+}
+#body4 {
+  background-image: url(images/body4.png);
+}
+
+.tree {
+  position: absolute;
+  left: 400px;
+  top: 300px;
+}
+
+#opponent {
+  left: 500px;
+  top: 500px;
+}
+#opponent .body {
+  background-image: url(images/body1.png);
+}
+#opponent .head {
+  background-image: url(images/head1.png);
+}
+
+.enemy {
+  position: absolute;
+}
+.enemy .head {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.enemy .body {
+  width: 32px;
+  height: 24px;
+  z-index: -1;
+}
+
+.enemy.grey .head {
+  background-image: url(images/baddygray.png);
+}
+.enemy.grey .body {
+  background-image: url(images/baddygray.png);
+  top: 32px;
+}
+
+.enemy.stand.up,
+.enemy.stand.down,
+.enemy.walk.down,
+.enemy.walk.up {
+  width: 64px;
+  height: 64px;
+}
+.enemy.stand.left,
+.enemy.stand.right,
+.enemy.walk.left,
+.enemy.walk.right {
+  width: 64px;
+  height: 64px;
+}
+
+.enemy {
+  overflow: hidden;
+}
+
+.enemy.stand.left .head {
+  margin-left: 16px;
+  background-position: -32px 0;
+}
+
+.enemy.stand.left .body {
+  margin-left: 18px;
+  width: 25px;
+  margin-top: -6px;
+  background-position: -88px -56px;
+}
+
+.enemy.stand.right .head {
+  background-position: -96px 0;
+}
+
+.enemy.stand.right .body {
+  margin-left: 4px;
+  width: 25px;
+  margin-top: -6px;
+  background-position: -88px -32px;
+}
+
+.enemy.stand.down .head {
+  background-position: -64px 0;
+  margin-left: 6px;
+}
+
+.enemy.stand.down .body {
+  margin-top: -10px;
+  width: 44px;
+  height: 26px;
+  background-position: -44px -32px;
+}
+
+.enemy.stand.up .head {
+  margin-left: 6px;
+  background-position: 0px 0;
+}
+
+.enemy.stand.up .body {
+  margin-top: -12px;
+  width: 44px;
+  height: 26px;
+  background-position: 0px -32px;
+}
+
+.enemy.walk.up .head {
+  margin-left: 6px;
+  animation: headbob 0.5s infinite;
+  background-position: 0px 0;
+}
+
+.enemy.walk.up .body {
+  margin-top: -12px;
+  width: 44px;
+  height: 26px;
+  background-position: 0px -32px;
+  animation: enemywalkup 1s steps(1) infinite;
+}
+
+@keyframes enemywalkup {
+  0%,
+  100% {
+    background-position: 0px -32px;
+  }
+  50% {
+    background-position: 0px -57px;
+    height: 32px;
+    margin-top: -16px;
+  }
+}
+
+.enemy.walk.down .head {
+  margin-left: 6px;
+  animation: headbob 0.5s infinite;
+  background-position: -64px 0;
+}
+
+.enemy.walk.down .body {
+  margin-top: -10px;
+  width: 44px;
+  height: 26px;
+  background-position: -44px -32px;
+  animation: enemywalkdown 1s steps(1) infinite;
+}
+
+@keyframes enemywalkdown {
+  0%,
+  100% {
+    background-position: -44px -32px;
+  }
+  50% {
+    background-position: -44px -57px;
+    height: 25px;
+    margin-top: -12px;
+  }
+}
+
+.enemy.walk.left .head {
+  animation: headbob 0.5s infinite;
+  background-position: -32px 0;
+}
+
+.enemy.walk.left .body {
+  margin-left: 4px;
+  width: 25px;
+  margin-top: -6px;
+
+  background-position: -88px -56px;
+  animation: enemywalkleft 1s steps(1) infinite;
+}
+
+@keyframes enemywalkleft {
+  0%,
+  100% {
+    background-position: -88px -56px;
+  }
+  50% {
+    background-position: -32px -90px;
+    height: 25px;
+    height: 30px;
+    width: 32px;
+    margin-left: -0px;
+    margin-top: -12px;
+  }
+}
+
+.enemy.walk.right .head {
+  background-position: -96px 0;
+  animation: headbob 0.5s infinite;
+}
+
+.enemy.walk.right .body {
+  margin-left: 4px;
+  width: 25px;
+  margin-top: -6px;
+  background-position: -88px -32px;
+  animation: enemywalkright 1s steps(1) infinite;
+}
+
+@keyframes enemywalkright {
+  0%,
+  100% {
+    background-position: -88px -32px;
+  }
+  50% {
+    background-position: 0px -90px;
+    height: 25px;
+    height: 30px;
+    width: 32px;
+    margin-left: -0px;
+    margin-top: -12px;
+  }
+}
+
+.enemy.appear {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  height: 56px;
+}
+
+.weapon.bow {
+  background-image: url(images/sprites.png);
+  background-position: -55px -214px;
+  width: 16px;
+  height: 32px;
+}
+
+.weapon {
+  display: none;
+  position: absolute;
+}
+
+.fire .weapon {
+  display: block;
+}
+
+.enemy.stand.left.fire .body {
+  background-position: -32px -90px;
+  margin-top: -8px;
+  margin-left: 16px;
+  width: 32px;
+  height: 31px;
+}
+
+.enemy.stand.right.fire .body {
+  background-position: 0px -90px;
+  margin-top: -8px;
+  margin-left: 0px;
+  width: 32px;
+  height: 30px;
+}
+
+.enemy.stand.down.fire .body {
+  background-position: -44px -57px;
+}
+
+.enemy.stand.up.fire .body {
+  background-position: 0px -57px;
+  margin-top: -16px;
+  height: 32px;
+}
+.enemy.walk.left.fire .weapon.bow,
+.enemy.stand.left.fire .weapon.bow {
+  top: 12px;
+  left: 2px;
+  z-index: -1;
+  animation: enemyfireleft 1s ease-in forwards;
+}
+
+.enemy.walk.right.fire .weapon.bow,
+.enemy.stand.right.fire .weapon.bow {
+  top: 12px;
+  left: 6px;
+  z-index: -1;
+  animation: enemyfireright 1s ease-in forwards;
+}
+
+.enemy..fire .weapon.bow,
+.enemy.stand.down.fire .weapon.bow {
+  top: 12px;
+  left: 6px;
+  z-index: 2;
+  animation: enemyfiredown 1s ease-in forwards;
+}
+
+.enemy.walk.up.fire .weapon.bow,
+.enemy.stand.up.fire .weapon.bow {
+  top: 12px;
+  left: 6px;
+  z-index: -1;
+  animation: enemyfireup 1s ease-in forwards;
+}
+
+@keyframes enemyfireright {
+  0% {
+    transform: rotate(90deg);
+    margin-top: 6px;
+    margin-left: 18px;
+  }
+  50% {
+    transform: rotate(0deg);
+    margin-top: 0;
+    margin-left: 24px;
+  }
+  100% {
+    transform: rotate(90deg);
+    margin-top: 6px;
+    margin-left: 18px;
+  }
+}
+
+@keyframes enemyfireleft {
+  0% {
+    transform: rotate(90deg);
+    margin-top: 6px;
+    margin-left: 8px;
+  }
+  50% {
+    transform: rotate(180deg);
+    margin-top: 0;
+    margin-left: 0;
+  }
+  100% {
+    transform: rotate(90deg);
+    margin-top: 6px;
+    margin-left: 8px;
+  }
+}
+
+@keyframes enemyfiredown {
+  0% {
+    transform: rotate(0deg);
+    margin-top: 6px;
+    margin-left: 18px;
+  }
+  50% {
+    transform: rotate(90deg);
+    margin-top: 14px;
+    margin-left: 6px;
+  }
+  100% {
+    transform: rotate(0deg);
+    margin-top: 6px;
+    margin-left: 18px;
+  }
+}
+
+@keyframes enemyfireup {
+  0% {
+    transform: rotate(0deg);
+    margin-top: 6px;
+    margin-left: 24px;
+  }
+  50% {
+    transform: rotate(-90deg);
+    margin-top: -22px;
+    margin-left: 8px;
+  }
+  100% {
+    transform: rotate(0deg);
+    margin-top: 6px;
+    margin-left: 24px;
+  }
+}
+
+.character.fire.stand.right .bow,
+.character.fire.walk.right .bow {
+  top: 12px;
+  left: 6px;
+  z-index: -1;
+  animation: enemyfireright 0.2s ease-in forwards;
+}
+
+.character.fire.stand.down .bow,
+.character.fire.walk.down .bow {
+  top: 12px;
+  left: 0px;
+  z-index: 1;
+  animation: enemyfiredown 0.2s ease-in forwards;
+}
+
+.character.fire.stand.left .bow,
+.character.fire.walk.left .bow {
+  top: 8px;
+  left: -16px;
+  z-index: -1;
+  animation: enemyfireleft 0.2s ease-in forwards;
+}
+
+.character.fire.stand.up .bow,
+.character.fire.walk.up .bow {
+  top: 12px;
+  left: 6px;
+  z-index: -2;
+  animation: enemyfireup 0.2s ease-in forwards;
+}
+
+.character.fire.stand.right .body {
+  background-position: -96px -192px;
+  margin-top: 14px;
+}
+
+.character.fire.stand.left .body {
+  background-position: -32px -192px;
+  margin-top: 14px;
+}
+
+.character.fire.stand.up .body {
+  background-position: 0px -192px;
+  margin-top: 14px;
+}
+
+.character.fire.stand.down .body {
+  background-position: -64px -192px;
+  margin-top: 14px;
+}
+
+.enemy.appear .head {
+  margin-top: 120px;
+  animation-delay: 35s;
+  animation: enemystand 1s ease-in 3s forwards;
+}
+
+.enemy.hide .head {
+  animation: enemyhide 1s ease-in forwards;
+}
+
+@keyframes enemystand {
+  0% {
+    margin-top: 120px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+
+@keyframes enemyhide {
+  0% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 120px;
+  }
+}
+
+.enemy.appear.left:before {
+  margin-left: 12px;
+}
+
+.enemy.appear:before {
+  content: "";
+  width: 32px;
+  height: 24px;
+  background-image: url(images/sprites.png);
+  background-position: -96px -82px;
+  display: block;
+  position: absolute;
+  z-index: 999;
+  margin-left: 6px;
+  margin-top: 32px;
+  animation: shakebush 1s steps(1) 3;
+}
+
+.enemy.hide:before {
+  content: "";
+  width: 32px;
+  height: 24px;
+  background-image: url(images/sprites.png);
+  background-position: -96px -82px;
+  display: block;
+  position: absolute;
+  z-index: 999;
+  margin-left: 6px;
+  margin-top: 32px;
+  animation: shakebush2 1s steps(1) 3, removebush 3s 3s forwards;
+}
+
+.arrow {
+  background-image: url(images/sprites.png);
+  width: 32px;
+  height: 10px;
+  position: absolute;
+  background-position: 0px -401px;
+  transform: rotate(-90deg);
+  animation: shoot 0.5s linear;
+}
+
+@keyframes shoot {
+  100% {
+    top: -100px;
+  }
+}
+
+.score-board {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.bomb {
+  background-image: url(images/sprites.png);
+  width: 31px;
+  height: 10px;
+  position: absolute;
+  background-position: -96px -401px;
+  transform: rotate(90deg);
+  animation: bombFall 2s cubic-bezier(0.87, 0.09, 0.86, 0.44);
+  bottom: 0%;
+}
+.bomb.fall {
+}
+
+@keyframes bombFall {
+  0% {
+    bottom: 100%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+
+.start:before {
+  background-image: url(images/head0.png);
+  background-repeat: no-repeat;
+  background-position: 0px -64px;
+  width: 32px;
+  height: 32px;
+  content: " ";
+  margin-right: 10px;
+}
+
+.start {
+  color: white;
+  text-shadow: 2px 2px 2px #000;
+  position: absolute;
+  z-index: 10000;
+  font-size: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20vw;
+  background-color: #ccc;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.start.hide {
+  animation: startBtn 0.5s ease-in;
+  top: -10%;
+}
+@keyframes startBtn {
+  0% {
+    top: 60%;
+  }
+  100% {
+    top: -10%;
+  }
+}
+.start.show {
+  animation: startShow 0.5s ease-in;
+}
+
+@keyframes startShow {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+.explosion {
+  width: 128px;
+  height: 160px;
+  position: absolute;
+  top: 88vw;
+  left: 300px;
+  margin-left: -64px;
+  margin-top: 0px;
+}
+
+.explosion:before {
+  z-index: 999;
+  width: 128px;
+  height: 32px;
+  display: block;
+  content: " ";
+  background-image: url(images/bomb1.png);
+  background-position: 0 -192px;
+  animation: bombH 0.5s steps(1) infinite;
+}
+
+.explosion:after {
+  z-index: 999;
+  width: 32px;
+  height: 160px;
+  display: block;
+  content: " ";
+  margin-top: -100px;
+  margin-left: 48px;
+  background-image: url(images/bomb1.png);
+  background-position: 0px -32px;
+  animation: bombV 0.5s steps(1) infinite;
+}
+
+@keyframes bombV {
+  0%,
+  100% {
+    background-position: 32px -32px;
+  }
+  12.5%,
+  87.5% {
+    background-position: 64px -32px;
+  }
+  25%,
+  75% {
+    background-position: 96px -32px;
+  }
+  37.5%,
+  62.5% {
+    background-position: 0 -32px;
+  }
+}
+
+@keyframes bombH {
+  0%,
+  100% {
+    background-position: 0 -288px;
+  }
+  12.5%,
+  87.5% {
+    background-position: 0 -256px;
+  }
+  25%,
+  75% {
+    background-position: 0 -224px;
+  }
+  37.5%,
+  62.5% {
+    background-position: 0 -224px;
+  }
+}
+.arrow.right {
+}
+
+.arrow.left {
+  transform: rotate(180deg);
+}
+
+.arrow.up {
+  transform: rotate(-90deg);
+}
+
+.arrow.down {
+  transform: rotate(90deg);
+}
+
+@keyframes shakebush {
+  0%,
+  100% {
+    background-position: -96px -82px;
+  }
+  50% {
+    background-position: -96px -106px;
+  }
+}
+
+@keyframes shakebush2 {
+  0%,
+  100% {
+    background-position: -96px -82px;
+  }
+  50% {
+    background-position: -96px -106px;
+  }
+}
+
+@keyframes removebush {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.character.stand.up .head {
+  background-position: 0px 0px;
+}
+
+.character.stand.down .head {
+  background-position: 0px -64px;
+}
+
+.character.stand.left .head {
+  background-position: 0px -32px;
+}
+
+.character.stand.right .head {
+  background-position: 0px -96px;
+}
+
+.character.stand.up .body {
+  background-position: 0px 0px;
+}
+
+.character.stand.down .body {
+  background-position: -64px 0px;
+}
+
+.character.stand.left .body {
+  background-position: -32px 0px;
+}
+
+.character.stand.right .body {
+  background-position: -96px 0px;
+}
+
+.character.walk.up .head {
+  background-position: 0px 0px;
+  animation: headbob 0.5s infinite;
+}
+
+.character.walk.up .body {
+  animation: walkup 1s steps(3) infinite;
+}
+
+.character.walk.down .head {
+  background-position: 0px -64px;
+  animation: headbob 0.75s infinite;
+}
+
+.character.walk.down .body {
+  animation: walkdown 1s steps(3) infinite;
+}
+
+.character.walk.left .head {
+  background-position: 0px -32px;
+  margin-top: -3px;
+  margin-left: -2px;
+  animation: headbob2 0.75s infinite;
+}
+
+.character.walk.left .body {
+  animation: walkleft 1s steps(3) infinite;
+}
+
+@keyframes walkleft {
+  0%,
+  100% {
+    background-position: -32px -32px;
+  }
+  50% {
+    background-position: -32px -128px;
+  }
+}
+
+.character.walk.right .head {
+  background-position: 0px -96px;
+  margin-top: -3px;
+  margin-left: 4px;
+  animation: headbob3 0.75s infinite;
+}
+
+.character.walk.right .body {
+  animation: walkright 1s steps(3) infinite;
+}
+
+@keyframes walkright {
+  0%,
+  100% {
+    background-position: -96px -32px;
+  }
+  50% {
+    background-position: -96px -128px;
+  }
+}
+
+@keyframes walkup {
+  0%,
+  100% {
+    background-position: 0px -32px;
+  }
+  50% {
+    background-position: 0px -128px;
+  }
+}
+
+@keyframes walkdown {
+  0%,
+  100% {
+    background-position: -64px -32px;
+  }
+  50% {
+    background-position: -64px -128px;
+  }
+}
+
+@keyframes headbob {
+  0%,
+  100% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: 1px;
+  }
+}
+
+@keyframes headbob2 {
+  0%,
+  100% {
+    margin-left: -2px;
+  }
+  50% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes headbob3 {
+  0%,
+  100% {
+    margin-left: 2px;
+  }
+  50% {
+    margin-left: 0px;
+  }
+}
+
+.enemy.dead:before {
+  content: "";
+  width: 32px;
+  height: 32px;
+  display: block;
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 12px;
+  background-image: url(images/sprites.png);
+  animation: enemydie 2s steps(1) forwards;
+  background-position: 0px -48px;
+}
+
+.enemy.dead .body,
+.enemy.dead .weapon,
+.enemy.dead .head {
+  animation: fadeout 0.5s forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes enemydie {
+  0%,
+  20%,
+  40%,
+  60%,
+  80% {
+    background-position: 0px -48px;
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    background-position: -32px -48px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.character.dead .body {
+  animation: dead 1s steps(1) forwards;
+}
+.character.dead .body:after {
+  background-image: inherit;
+  content: "";
+  width: 32px;
+  height: 32px;
+  display: block;
+  background-position: 0px -480px;
+  margin-top: -12px;
+  position: absolute;
+  animation: deadarms 1s steps(1) forwards;
+}
+
+.character.stand.dead .head {
+  animation: deadhead 1s steps(1) forwards;
+}
+
+.character.hit.left .body {
+  animation: hitleft 0.2s steps(1) forwards;
+}
+
+.character.hit.left .head {
+  background-position: 0px -432px;
+}
+
+.character.hit.right .head {
+  background-position: 0px -496px;
+}
+
+.character.hit.right .body {
+  background-position: -96px -160px;
+  margin-left: -3px;
+}
+
+.character.hit.up .head {
+  background-position: 0px 0px;
+}
+
+.character.hit.up .body {
+  background-position: -128px -160px;
+  margin-top: 16px;
+}
+
+.character.hit.down .head {
+  background-position: 0px -464px;
+}
+
+.character.hit.down .body {
+  background-position: -64px -160px;
+  margin-top: 22px;
+}
+
+@keyframes hitleft {
+  0%,
+  100% {
+    background-position: -32px -160px;
+  }
+}
+
+@keyframes dead {
+  0% {
+    background-position: 0px -512px;
+  }
+  25% {
+    background-position: -32px -512px;
+  }
+  50% {
+    background-position: -64px -512px;
+  }
+  75% {
+    background-position: -96px -512px;
+  }
+  100% {
+    background-position: -32px -678px;
+    width: 64px;
+  }
+}
+
+@keyframes deadhead {
+  0% {
+    background-position: 0px 0px;
+  }
+  25% {
+    background-position: 0px -432px;
+    margin-top: -2px;
+  }
+  50% {
+    background-position: 0px -464px;
+    margin-top: -2px;
+  }
+  75% {
+    background-position: 0px -496px;
+  }
+  100% {
+    background-position: 0px -528px;
+    margin-top: 4px;
+    margin-left: 16px;
+  }
+}
+
+@keyframes deadarms {
+  0% {
+    background-position: 0px -480px;
+  }
+  25% {
+    background-position: -32px -480px;
+  }
+  50% {
+    background-position: -64px -480px;
+  }
+  75% {
+    background-position: -96px -480px;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.hud {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+ul {
+  list-style-type: none;
+  float: right;
+  margin-right: 20px;
+}
+.health li {
+  width: 40px;
+  height: 48px;
+  background-image: url(images/state.png);
+  float: right;
+  margin-left: 8px;
+}
+
+.tile {
+  width: 16px;
+  height: 16px;
+  background-image: url(images/tiles.png);
+  padding: 0;
+}
+
+.game-over {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.game-over.show {
+  display: block;
+}

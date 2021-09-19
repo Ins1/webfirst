@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(./imgs/bg2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.health {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  display: flex;
+}
+.life {
+  margin: 0 5px;
+  font-size: 1.5rem;
+  color: rgb(248, 22, 22);
+}
+
+.start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+form {
+  margin: 20px 0px;
+}
+
+form input {
+  padding: 10px 5px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.save-btn {
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-btn {
+  padding: 20px;
+  font-size: 40px;
+  background-color: rgb(208, 125, 0);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease all;
+}
+
+.start-btn:hover {
+  transform: scale(0.9);
+}
+
+.start.hide {
+  animation: startBtn 0.5s ease-in;
+  top: -10%;
+}
+
+@keyframes startBtn {
+  0% {
+    top: 60%;
+  }
+  100% {
+    top: -10%;
+  }
+}
+.start.show {
+  animation: startShow 0.5s ease-in;
+}
+
+@keyframes startShow {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+
+.player {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.player.dead-animation {
+  animation: blink 1s linear;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bombs {
+  position: relative;
+}
+
+.bomb {
+  position: absolute;
+}
+.bomb.fall {
+  animation: bombFall 2s cubic-bezier(0.87, 0.09, 0.86, 0.44);
+  bottom: 0%;
+}
+
+@keyframes bombFall {
+  0% {
+    bottom: 100%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+
+.explosion {
+  position: absolute;
+  animation: scaleUp 0.5s ease;
+  transform: scale(1.5);
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.game-over {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  font-size: 3rem;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  transition: 0.5s ease-in all;
+}
+
+.game-over.appear {
+  transform: translate(-50%, -50%) scale(1);
+}
